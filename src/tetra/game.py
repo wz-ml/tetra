@@ -1,6 +1,7 @@
 import random
 from typing import Optional
 import matplotlib.pyplot as plt
+from matplotlib.colors import to_rgb
 import numpy as np
 from .data import MINO_DATA, MinoType, Direction, Action
 from .board import Board
@@ -31,31 +32,39 @@ class Game:
 
     def render(self, show=True, block_thread=True):
         # Create a grid for the board
-        grid = np.array([[cell.value for cell in row] for row in reversed(self.board.grid)])
+        grid = np.array([[cell for cell in row] for row in reversed(self.board.grid)])
 
         # Add the current piece to the grid
         if self.current_piece:
             for x, y in self.current_piece.get_cell_positions():
                 if 0 <= y < self.board.height and 0 <= x < self.board.width:
-                    grid[self.board.height - 1 - y, x] = self.current_piece.color.value
+                    grid[self.board.height - 1 - y, x] = self.current_piece.color
 
-        # Create a new figure
-        plt.figure(figsize=(6, 12))
-        plt.imshow(grid, cmap='rainbow')
-        plt.title(f'Score: {self.score}')
-        plt.xlabel('Game Over' if self.game_over else '')
+        # Create a 3-channel RGB image
+        color_map = {
+            0: (0, 0, 0),  # NONE (black)
+            1: to_rgb('red'),
+            2: to_rgb('orange'),
+            3: to_rgb('yellow'),
+            4: to_rgb('green'),
+            5: to_rgb('cyan'),
+            6: to_rgb('blue'),
+            7: to_rgb('purple')
+        }
 
-        # Remove axis ticks
-        plt.xticks([])
-        plt.yticks([])
-
-        # Add grid
-        plt.grid(color='black', linewidth=0.5)
+        rgb_image = np.array([[color_map[cell if type(cell) == int else cell.value] for cell in row] for row in grid])
 
         if show:
+            plt.figure(figsize=(6, 12))
+            plt.imshow(rgb_image)
+            plt.title(f'Score: {self.score}')
+            plt.xlabel('Game Over' if self.game_over else '')
+            plt.xticks([])
+            plt.yticks([])
+            plt.grid(color='white', linewidth=0.5, alpha=0.5)
             plt.show(block=block_thread)
-        else:
-            return plt.gcf()  # Return the current figure
+        
+        return rgb_image
 
     def _fill_queue(self):
         bag = list(MinoType)

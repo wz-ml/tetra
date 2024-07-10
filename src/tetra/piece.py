@@ -7,7 +7,7 @@ class Piece:
         self.x = x
         self.y = y
         self.rotation = 0
-        self.color = MINO_DATA[mino_type]['color']
+        self.color = MINO_DATA[mino_type]['color'].value
 
     def get_cell_positions(self) -> list[tuple[int, int]]:
         offsets = MINO_DATA[self.mino_type]['offsets']

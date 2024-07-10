@@ -16,7 +16,6 @@ class Board:
         return valid
 
     def place_piece(self, piece: Piece):
-        print(piece.get_cell_positions())
         for x, y in piece.get_cell_positions():
             self.grid[y][x] = piece.color
 
