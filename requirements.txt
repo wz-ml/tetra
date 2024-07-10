@@ -1,5 +1,5 @@
 torch>=2.3.0
-numpy
+numpy~=1.26.2
 scipy
 pandas
 scikit-learn
@@ -7,3 +7,4 @@ seaborn
 ipywidgets
 jupyter
 ipykernel
+matplotlib~=3.8.2
