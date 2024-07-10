@@ -1,0 +1,9 @@
+torch>=2.3.0
+numpy
+scipy
+pandas
+scikit-learn
+seaborn
+ipywidgets
+jupyter
+ipykernel
