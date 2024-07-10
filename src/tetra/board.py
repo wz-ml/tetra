@@ -1,5 +1,5 @@
-from data import CellColor
-from piece import Piece
+from .data import CellColor
+from .piece import Piece
 
 
 class Board:

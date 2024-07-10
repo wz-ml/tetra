@@ -2,9 +2,9 @@ import random
 from typing import Optional
 import matplotlib.pyplot as plt
 import numpy as np
-from data import MINO_DATA, MinoType, Direction, Action
-from board import Board
-from piece import Piece
+from .data import MINO_DATA, MinoType, Direction, Action
+from .board import Board
+from .piece import Piece
 
 
 class Game:

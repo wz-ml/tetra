@@ -13,6 +13,8 @@ conda activate tetra
 
 3. Navigate to the `Tetra` directory and install the `tetra` package.
 
-`pip install -e .`
+```bash
+pip install -e .
+```
 
-Note: Avoid using `python setup.py` as it doesn't install the package in editable mode, which is required if you don't want to reinstall the package every time you update its files.
+>Note: Avoid using `python setup.py` as it doesn't install the package in editable mode, which is required if you don't want to reinstall the package every time you update its files.

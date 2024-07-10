@@ -1,4 +1,4 @@
-from data import MINO_DATA, Direction, MinoType
+from .data import MINO_DATA, Direction, MinoType
 
 
 class Piece:
