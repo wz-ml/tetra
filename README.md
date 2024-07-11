@@ -1,4 +1,7 @@
-# tetra
+# Tetra
+
+<img src="3-simplex.jpg" width=400></img>
+
 An adaptive human-like Tetris sparring partner.
 
 ## Setup
